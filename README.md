@@ -24,3 +24,9 @@ a JSON object when a particular field is present in both
 
 The example above is a PubSub push notification that Google PubSub service sends 
 using push subscriptions.
+
+## How to build
+
+1. Install JDK11.
+2. Configure JDK11 as JVM for Gradle (add to Path, set JAVA_HOME, etc.).
+3. Run `./gradlew`.
