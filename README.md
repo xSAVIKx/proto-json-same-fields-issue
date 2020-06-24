@@ -25,6 +25,8 @@ a JSON object when a particular field is present in both
 The example above is a PubSub push notification that Google PubSub service sends 
 using push subscriptions.
 
+See more examples in [`ProtoDeserializationTest`](src/test/java/com/github/proto/ProtoDeserializationTest.java).
+
 ## How to build
 
 1. Install JDK11.
