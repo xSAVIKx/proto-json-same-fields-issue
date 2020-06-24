@@ -2,6 +2,7 @@ package com.github.proto;
 
 import com.google.pubsub.v1.PubsubPushNotification;
 import io.spine.json.Json;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -43,8 +44,9 @@ final class ProtoDeserializationTest {
         });
     }
 
+    @Ignore("This test throws IllegalArgumentException but should not! See https://github.com/protocolbuffers/protobuf/issues/7641")
     @Test
-    @DisplayName("throw exception if there is same field in `snake_case` and `lowerCamelCase`")
+    @DisplayName("not throw exceptions if there are fields in both `snake_case` and `lowerCamelCase` styles")
     void deserializeBothStyles() {
         String bothStylesPubsubJsonProto = "" +
                 "{\n" +
@@ -57,7 +59,7 @@ final class ProtoDeserializationTest {
                 "  },\n" +
                 "  \"subscription\": \"projects/test-project/subscriptions/test-subscription\"\n" +
                 "}";
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+        Assertions.assertDoesNotThrow(() -> {
             Json.fromJson(bothStylesPubsubJsonProto, PubsubPushNotification.class);
         });
     }
